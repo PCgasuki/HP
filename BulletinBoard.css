@@ -1,16 +1,13 @@
 #kotei {
 
-width:50%;
-height:4em;
-text-align:center;
-}
-
-
-#kotei > img {
-
-height:100%;
-}
-body {
-
-    margin-top:323;
+    width:50%;
+    height:4em;
+    text-align:center;
     }
+    
+    
+    #kotei > img {
+    
+    height: 423%;
+    }
+  
