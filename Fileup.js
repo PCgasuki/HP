@@ -22,7 +22,7 @@
         console.log(xhr.responseText); // レスポンスの内容を出力
 
         // 画像のURLをランダムに作成
-        var imageURL = 'https://funyanya123.github.io/PCgasukinahitonoHP/Fileup.html/uploads/' + generateRandomString() + '.jpg';
+        var imageURL = 'https://funyanya123.github.io/PCgasukinahitonoHP/Fileup.html/' + generateRandomString() + '.jpg';
         console.log('画像のURL:', imageURL);
 
         // ここで取得した画像のURLを利用して必要な処理を行います
