@@ -32,7 +32,7 @@
     formData.append('avatar', file);
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://example.com/upload/' + randomURL);
+    xhr.open('POST', 'https://funyanya123.github.io/PCgasukinahitonoHP/Fileup.html/' + randomURL);
     xhr.onload = function() {
       if (xhr.status === 200) {
         console.log('画像のアップロードに成功しました');
