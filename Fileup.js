@@ -1,45 +1,50 @@
 (function() {
+  // フォーム要素を取得
   var form = document.getElementById('uploadForm');
-  var input = document.getElementById('avatarInput');
 
+  // フォームの送信イベントを監視
   form.addEventListener('submit', function(e) {
     e.preventDefault();
-    
-    var file = input.files[0];
-    var randomURL = generateRandomURL();
 
-    // ここでランダムなURLを使用して何らかの処理を行う
-    console.log('ランダムなURL:', randomURL);
-    
-    // 画像をアップロードするための処理を実行する
-    uploadImage(file, randomURL);
-  });
+    // FormDataオブジェクトを作成
+    var formData = new FormData(form);
 
-  function generateRandomURL() {
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var length = 8;
-    var randomURL = '';
-
-    for (var i = 0; i < length; i++) {
-      randomURL += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-
-    return randomURL;
-  }
-
-  function uploadImage(file, randomURL) {
-    var formData = new FormData();
-    formData.append('avatar', file);
-
+    // XMLHttpRequestオブジェクトを作成
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://funyanya123.github.io/PCgasukinahitonoHP/Fileup.html/' + randomURL);
+
+    // 送信データを設定
+    xhr.open('POST', 'https://funyanya123.github.io/PCgasukinahitonoHP/Fileup.html'); // アップロード先のURLを指定
+
+    // レスポンス受信時の処理
     xhr.onload = function() {
       if (xhr.status === 200) {
-        console.log('画像のアップロードに成功しました');
+        // アップロード成功時の処理
+        console.log(xhr.responseText); // レスポンスの内容を出力
+
+        // 画像のURLをランダムに作成
+        var imageURL = 'https://funyanya123.github.io/PCgasukinahitonoHP/Fileup.html/uploads/' + generateRandomString() + '.jpg';
+        console.log('画像のURL:', imageURL);
+
+        // ここで取得した画像のURLを利用して必要な処理を行います
+        // 例: 画像の表示や別の要素にURLをセットするなど
       } else {
-        console.log('画像のアップロードに失敗しました');
+        // アップロード失敗時の処理
+        console.error('アップロードエラー:', xhr.status);
       }
     };
+
+    // リクエスト送信
     xhr.send(formData);
+  });
+
+  // ランダムな文字列を生成する関数
+  function generateRandomString() {
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var length = 8;
+    var randomString = '';
+    for (var i = 0; i < length; i++) {
+      randomString += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return randomString;
   }
 })();
